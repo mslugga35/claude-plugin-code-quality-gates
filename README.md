@@ -5,7 +5,11 @@ A Claude Code plugin that enforces your project's coding standards automatically
 ## Install
 
 ```bash
+# From the official marketplace (once accepted)
 /plugin install code-quality-gates@claude-plugins-official
+
+# Or install directly from GitHub
+/plugin install https://github.com/mslugga35/claude-plugin-code-quality-gates
 ```
 
 ## Usage
@@ -13,9 +17,9 @@ A Claude Code plugin that enforces your project's coding standards automatically
 ### Slash Command
 
 ```
-/code-quality-gates:quality-check
-/code-quality-gates:quality-check --fix
-/code-quality-gates:quality-check --init
+/code-quality-gates:quality-check              # audit changed files (read-only)
+/code-quality-gates:quality-check --fix        # audit + auto-fix with confirmation
+/code-quality-gates:quality-check --init       # bootstrap standards files
 ```
 
 ### Automatic (Skill)
@@ -27,13 +31,15 @@ The plugin activates automatically when you:
 
 ## The 5-Layer Model
 
-```
-Layer 1: DOCS       Read standards before writing
-Layer 2: ROUTING    Route code through the right patterns
-Layer 3: LINT       Run project linter after writing
-Layer 4: PRE-COMMIT Catch remaining issues before commit
-Layer 5: CI         Final gate in CI/CD pipeline
-```
+| Layer | Gate | What It Does |
+|-------|------|--------------|
+| 1 | DOCS | Read standards before writing |
+| 2 | ROUTING | Verify files are placed in the correct directory |
+| 3 | LINT | Run project linter after writing |
+| 4 | PRE-COMMIT | Catch remaining issues before commit |
+| 5 | CI | Final gate in CI/CD pipeline |
+
+See `skills/quality-gates/SKILL.md` for full layer definitions and process.
 
 ## Project Standards
 

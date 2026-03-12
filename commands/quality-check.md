@@ -1,18 +1,24 @@
 ---
 description: Run quality gates on current project — check standards compliance, lint, and test
-argument-hint: [files...] [--fix] [--init]
-allowed-tools: [Bash, Read, Grep, Glob, Edit, Write]
+argument-hint: [files...] [--fix] | --init
+allowed-tools: [Bash, Read, Grep, Glob]
 ---
 
 Run quality gates on the current project.
 
-If `$ARGUMENTS` contains `--init`:
-- Create a `code-standards/` directory with starter RULES.md, CONVENTIONS.md, SECURITY.md
-- Analyze existing code to infer current conventions
-- Populate the standards files based on what's already in the codebase
+**Mode: `--init`** (creates standards files)
+- Confirm with the user before creating any files: "About to create code-standards/ with RULES.md, CONVENTIONS.md, SECURITY.md. Proceed?"
+- Only after user confirms, create the `code-standards/` directory with starter templates
+- Analyze existing code to infer current conventions and populate the templates
 
-Otherwise:
+**Mode: default** (read-only audit)
 1. Find and read project standards (code-standards/, CLAUDE.md, linter configs)
-2. Check specified files (or all recently changed files via `git diff --name-only`) against standards
+2. Check specified files against standards. If no files specified, check `git diff --name-only` for changed files. If git diff is empty, inform the user there are no changed files to check.
 3. Report violations as a table
-4. If `--fix` is present, auto-fix what's possible and re-run checks
+4. Do NOT modify any files in this mode
+
+**Mode: `--fix`** (audit + auto-fix)
+1. Run the same audit as default mode
+2. Show the violations table
+3. Ask the user to confirm before making any changes
+4. Only after confirmation, apply auto-fixes and re-run checks
