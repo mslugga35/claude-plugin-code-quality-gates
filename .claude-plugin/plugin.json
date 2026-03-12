@@ -1,0 +1,12 @@
+{
+  "name": "code-quality-gates",
+  "version": "1.0.0",
+  "description": "5-layer code quality enforcement — docs, routing, lint, pre-commit, CI. Reads project standards before writing code. Never ships non-compliant code.",
+  "author": {
+    "name": "mslugga35",
+    "url": "https://github.com/mslugga35"
+  },
+  "repository": "https://github.com/mslugga35/claude-plugin-code-quality-gates",
+  "license": "MIT",
+  "keywords": ["code-quality", "linting", "standards", "enforcement", "pre-commit", "conventions"]
+}
