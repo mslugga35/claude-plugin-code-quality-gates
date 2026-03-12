@@ -18,7 +18,7 @@ A Claude Code plugin that enforces your project's coding standards automatically
 
 ```
 /code-quality-gates:quality-check              # audit changed files (read-only)
-/code-quality-gates:quality-check --fix        # audit + auto-fix with confirmation
+/code-quality-gates:quality-check --fix        # audit + run linter fix mode (e.g. eslint --fix, ruff --fix) with confirmation
 /code-quality-gates:quality-check --init       # bootstrap standards files
 ```
 

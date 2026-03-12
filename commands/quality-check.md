@@ -1,7 +1,7 @@
 ---
 description: Run quality gates on current project — check standards compliance, lint, and test
 argument-hint: [files...] [--fix] | --init
-allowed-tools: [Bash, Read, Grep, Glob]
+allowed-tools: [Bash, Read, Grep, Glob, Write, Edit]
 ---
 
 Run quality gates on the current project.
